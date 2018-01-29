@@ -1,17 +1,19 @@
-# k0st/zcash
+# Based on k0st/zcash
 
 Zcash inside docker
 
-Image is based on the [debian](https://hub.docker.com/_/debian/) base image
+Image is based on the Ubuntu 16.04 base image
 
-## Docker image size
+## Build
 
-[![Latest](https://badge.imagelayers.io/k0st/zcash.svg)](https://imagelayers.io/?images=k0st/zcash:latest 'latest')
+```
+docker build -f Dockerfile --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t zcash-cli .
+```
 
 ## Docker image usage
 
 ```
-docker run [docker-options] k0st/zcash
+docker run [docker-options] zcash-cli
 ```
 
 ## Examples
@@ -19,19 +21,13 @@ docker run [docker-options] k0st/zcash
 Typical basic usage (start zcashd daemon): 
 
 ```
-docker run -it k0st/zcash zcashd
-```
-
-Typical usage to mine:
-
-```
-docker run -it k0st/zcash zcashd -gen
+docker run -it zcash-cli zcashd
 ```
 
 Typical usage to perform query:
 
 ```
-docker run -d --name zcashcont k0st/zcash zcashd
+docker run -d --name zcashcont zcash-cli zcashd
 docker exec -u zcash zcashcont zcash-cli getbalance
 ```
 
