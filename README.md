@@ -7,7 +7,7 @@ Image is based on the Ubuntu 16.04 base image
 ## Build
 
 ```
-docker build -f Dockerfile --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t zcash-cli .
+docker build -f Dockerfile --build-arg UID=$(id -u) --build-arg GID=$(id -g) --build-arg UNAME=$(id -n -u) -t zcash-cli .
 ```
 
 ## Docker image usage
